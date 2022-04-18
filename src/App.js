@@ -12,6 +12,9 @@ import {
   PrivateRoute,
   AuthWrapper,
 } from './pages'
+
+import Custom from "./pages/Custom";
+import ContactUs from "./pages/ContactUs";
 function App() {
   return (
     <AuthWrapper>
@@ -30,6 +33,12 @@ function App() {
           </Route>
           <Route exact path='/products'>
             <Products />
+          </Route>
+          <Route exact path='/contact-us'>
+            <ContactUs />
+          </Route>
+          <Route exact path='/custom-build'>
+            <Custom />
           </Route>
           <Route path='/products/:id' children={<SingleProduct />} />
           <PrivateRoute path='/checkout'>
