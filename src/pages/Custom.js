@@ -17,7 +17,7 @@ const Custom = () => {
         //
         // </main>
 
-<>
+<Wrapper>
     <IframeResizer
         log
         src="https://pcbuilder-eight.vercel.app/"
@@ -25,7 +25,7 @@ const Custom = () => {
     />
 
 
-</>
+</Wrapper>
     )
 }
 const Wrapper = styled.div`

@@ -14,16 +14,7 @@ const AboutPage = () => {
             <div className='underline'></div>
           </div>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-            accusantium sapiente tempora sed dolore esse deserunt eaque
-            excepturi, delectus error accusamus vel eligendi, omnis beatae.
-            Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque
-            dolore, obcaecati incidunt sequi blanditiis est exercitationem
-            molestiae delectus saepe odio eligendi modi porro eaque in libero
-            minus unde sapiente consectetur architecto. Ullam rerum, nemo iste
-            ex, eaque perspiciatis nisi, eum totam velit saepe sed quos
-            similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
-            iste.
+            The business started as a way to answer the growing demand for personal computer during the lockdowns in the city because of the pandemic. We started by repairing computers from closed down internet shops; we repaired the desktop computers and then sell the whole system as refurbished products. As the interest on what we offer grew, so as our clients looking to buy customized computers that will cater their needs, either for online classes, work-from-home, and even for online gaming. We then offered packages that will fit the specs that they will use it for. We also offered after-sale warranty support, and discounted products for some loyal customers.
           </p>
         </article>
       </Wrapper>

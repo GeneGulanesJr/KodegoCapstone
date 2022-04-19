@@ -26,8 +26,8 @@ const Hero = () => {
           </h1>
         )}
         <h1>
-          design your <br />
-          comfort zone
+          Convenience <br />
+          at its finest.
         </h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
