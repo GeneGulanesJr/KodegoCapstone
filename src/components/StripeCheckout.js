@@ -32,7 +32,7 @@ const CheckoutForm = () => {
       const { data } = await axios.post(
         // '/.netlify/functions/create-payment-intent' //this is for netlify functions
         "https://test.dragonpay.ph/", // this is for heroku
-        JSON.stringify({ cart, shipping_fee, total_amount })
+      console.log(  JSON.stringify({ cart, shipping_fee, total_amount }))
       );
       setClientSecret(data.clientSecret);
     } catch (error) {
