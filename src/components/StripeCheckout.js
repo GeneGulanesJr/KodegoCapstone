@@ -154,8 +154,8 @@ const StripeCheckout = () => {
         //  `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${total_amount}.00
        //   &ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${total_amount}.00`, // this is for heroku
      //pass digest as an async function
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = () => {
+
         const url = `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${totalamount2}&ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${totalamount2}`;
         window.location.href = url;
     }
