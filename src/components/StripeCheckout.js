@@ -164,7 +164,7 @@ const StripeCheckout = () => {
                   <p>Test Card Number: 4242 4242 4242 4242</p>
                    </article>
         <form action="http://test.dragonpay.ph/Pay.aspx" method="get" id="paymentValidation">
-            <input type="HIDDEN" name="merchantid" value="#DL4A1EUOTIC#"/>
+            <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
               <input type="HIDDEN" name="txnid" value={transactionId}/>
                 <input type="HIDDEN" name="amount" value={totalamount2}/>
                   <input type="HIDDEN" name="ccy" value="#PHP#"/>
