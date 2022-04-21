@@ -165,11 +165,11 @@ const StripeCheckout = () => {
                    </article>
         <form action="http://test.dragonpay.ph/Pay.aspx" method="get" id="paymentValidation">
             <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
-              <input type="text" disabled name="txnid" value={transactionId}/>
-                <input type="number" disabled name="amount" value={totalamount2}/>
+              <input type="HIDDEN" name="txnid" value={transactionId}/>
+                <input type="HIDDEN" name="amount" value={totalamount2}/>
                   <input type="HIDDEN" name="ccy" value="#PHP#"/>
-                  <input type="text"  disabled name="description" value="KodegoCapstone"/>
-                    <input type="text" disabled name="email" value="gulanesgene@gmail.com"/>
+                  <input type="HIDDEN" name="description" value="KodegoCapstone"/>
+                    <input type="HIDDEN" name="email" value="gulanesgene@gmail.com"/>
                       <input type="HIDDEN" name="digest" value={digest}/>
                         <input type="HIDDEN" name="param1" value="180000000405"/>
                           <input type="HIDDEN" name="param2" value={totalamount2}/>
