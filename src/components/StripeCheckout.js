@@ -155,6 +155,10 @@ const StripeCheckout = () => {
   const transactionId = uuidv4();
   const totalamount2=`${total_amount}.00`;
 
+
+    function handleChange(event) {
+        console.log(event.target.value);
+    }
     function handleSubmit(e) {
         e.preventDefault()
 
@@ -171,7 +175,7 @@ const StripeCheckout = () => {
             param1: param1.value,
             param2: param2.value
         }
-        axios.post('http://test.dragonpay.ph/Pay.aspx', data)
+        axios.post('https://test.dragonpay.ph/Pay.aspx', data)
             .then(res => {
                 console.log(res)
             })
