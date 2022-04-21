@@ -153,6 +153,15 @@ const StripeCheckout = () => {
   const digest = sha1(`DL4A1EUOTIC:${transactionId}:${totalamount2}:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`);
         //  `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${total_amount}.00
        //   &ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${total_amount}.00`, // this is for heroku
+     //pass digest as an async function
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const url = `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${totalamount2}&ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${totalamount2}`;
+        window.location.href = url;
+    }
+
+
+
       return (
       <Wrapper>
         {/*<Elements stripe={promise}>*/}
@@ -163,7 +172,7 @@ const StripeCheckout = () => {
                    <p>Your total is {formatPrice(total_amount)}</p>
                   <p>Test Card Number: 4242 4242 4242 4242</p>
                    </article>
-        <form action="http://test.dragonpay.ph/Pay.aspx" method="get" id="paymentValidation">
+        <form action={onSubmit()} method="get" id="paymentValidation">
             <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
               <input type="HIDDEN" name="txnid" value={transactionId}/>
                 <input type="HIDDEN" name="amount" value={totalamount2}/>
