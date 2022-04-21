@@ -1,35 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
-import { services } from '../utils/constants'
+import {services} from '../utils/constants'
+
 const Services = () => {
-  return (
-    <Wrapper>
-      <div className='section-center'>
-        <article className='header'>
-          <h3>
-            custom furniture <br /> built only for you
-          </h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum debitis consectetur reprehenderit non aliquam voluptates
-            dolore aut vero consequuntur.
-          </p>
-        </article>
-        <div className='services-center'>
-          {services.map((service) => {
-            const { id, icon, title, text } = service
-            return (
-              <article className='service' key={id}>
-                <span className='icon'>{icon}</span>
-                <h4>{title}</h4>
-                <p>{text}</p>
-              </article>
-            )
-          })}
-        </div>
-      </div>
-    </Wrapper>
-  )
+    return (
+        <Wrapper>
+            <div className='section-center'>
+                <article className='header'>
+                    <h3>
+                        Pre Built Systems<br/> built only for you
+                    </h3>
+                    <p>
+                        Pre-built systems are an attractive option for those who are less concerned with the minute
+                        details of every component in their build (such as the manufacturer and detailed specifications
+                        like RAM speed).
+                      <br/>
+                        They are ideal for someone who favors convenience over the ability to pick and choose every
+                        piece of hardware in their build.
+
+                    </p>
+                </article>
+                <div className='services-center'>
+                    {services.map((service) => {
+                        const {id, icon, title, text} = service
+                        return (
+                            <article className='service' key={id}>
+                                <span className='icon'>{icon}</span>
+                                <h4>{title}</h4>
+                                <p>{text}</p>
+                            </article>
+                        )
+                    })}
+                </div>
+            </div>
+        </Wrapper>
+    )
 }
 
 const Wrapper = styled.section`
@@ -37,6 +42,7 @@ const Wrapper = styled.section`
   h4 {
     color: var(--clr-primary-1);
   }
+
   padding: 5rem 0;
 
   background: var(--clr-primary-10);
@@ -44,25 +50,30 @@ const Wrapper = styled.section`
   .header h3 {
     margin-bottom: 2rem;
   }
+
   p {
     margin-bottom: 0;
     line-height: 1.8;
     color: var(--clr-primary-3);
   }
+
   .services-center {
     margin-top: 4rem;
     display: grid;
     gap: 2.5rem;
   }
+
   .service {
     background: var(--clr-primary-7);
     text-align: center;
     padding: 2.5rem 2rem;
     border-radius: var(--radius);
+
     p {
       color: var(--clr-primary-2);
     }
   }
+
   span {
     width: 4rem;
     height: 4rem;
@@ -73,10 +84,12 @@ const Wrapper = styled.section`
     border-radius: 50%;
     background: var(--clr-primary-10);
     color: var(--clr-primary-1);
+
     svg {
       font-size: 2rem;
     }
   }
+
   @media (min-width: 992px) {
     .header {
       display: grid;

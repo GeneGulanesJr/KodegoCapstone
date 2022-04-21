@@ -1,56 +1,61 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import heroBcg from "../assets/hero-bcg.jpeg";
 import heroBcg2 from "../assets/hero-bcg-2.jpeg";
-import { useUserContext } from "../context/user_context";
+import {useUserContext} from "../context/user_context";
 
 const Hero = () => {
-  const { myUser } = useUserContext();
+    const {myUser} = useUserContext();
 
-  return (
-    <Wrapper className="section-center">
-      <article className="content">
-        {myUser && (
-          <h1 style={{ color: "#ab7a5f", fontSize: "2.5rem" }}>
-            Welcome,{" "}
-            <span
-              style={{
-                backgroundImage:
-                  "linear-gradient(transparent 0%, transparent -76%, #fbf2f2 62%, #ffd2d2 105%, transparent 90%, transparent)",
-              }}
-            >
+    return (
+        <Wrapper className="section-center">
+            <article className="content">
+                {myUser && (
+                    <h1 style={{color: "#ab7a5f", fontSize: "2.5rem"}}>
+                        Welcome,{" "}
+                        <span
+                            style={{
+                                backgroundImage:
+                                    "linear-gradient(transparent 0%, transparent -76%, #fbf2f2 62%, #ffd2d2 105%, transparent 90%, transparent)",
+                            }}
+                        >
               {myUser?.name}
             </span>
-            !
-          </h1>
-        )}
-        <h1>
-          Convenience <br />
-          at its finest.
-        </h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
-          sed omnis corporis doloremque possimus velit! Repudiandae nisi odit,
-          aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
-          alias?
-        </p>
-        <Link to="/products" className="btn hero-btn">
-          shop now
-        </Link>
-      </article>
-      <article className="img-container">
-        <img src={heroBcg} alt="nice table" className="main-img" />
-        <img src={heroBcg2} alt="person working" className="accent-img" />
-      </article>
-    </Wrapper>
-  );
+                        !
+                    </h1>
+                )}
+                <h1>
+                    Convenience <br/>
+                    at its finest.
+                </h1>
+                <p>
+                    Do you need help on fixing or upgrading your desktop computer, or are you thinking of buying a brand
+                    new one? Sit and relax because we got you covered.
+                    <br/>
+                    Please browse through our list of Desktop
+                    computer packages that will cater to your needs.
+                    <br/>
+                    Feel free to leave us a message if you have
+                    questions or you needs assistance on choosing one. Click on Shop Now to start.
+                </p>
+                <Link to="/products" className="btn hero-btn">
+                    shop now
+                </Link>
+            </article>
+            <article className="img-container">
+                <img src={heroBcg} alt="nice table" className="main-img"/>
+                <img src={heroBcg2} alt="person working" className="accent-img"/>
+            </article>
+        </Wrapper>
+    );
 };
 
 const Wrapper = styled.section`
   min-height: 60vh;
   display: grid;
   place-items: center;
+
   .img-container {
     display: none;
   }
@@ -62,6 +67,7 @@ const Wrapper = styled.section`
     color: var(--clr-grey-5);
     font-size: 1rem;
   }
+
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
     grid-template-columns: 1fr 1fr;
@@ -69,17 +75,21 @@ const Wrapper = styled.section`
     h1 {
       margin-bottom: 2rem;
     }
+
     p {
       font-size: 1.25rem;
     }
+
     .hero-btn {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
     }
+
     .img-container {
       display: block;
       position: relative;
     }
+
     .main-img {
       width: 100%;
       height: 550px;
@@ -88,6 +98,7 @@ const Wrapper = styled.section`
       display: block;
       object-fit: cover;
     }
+
     .accent-img {
       position: absolute;
       bottom: 0;
@@ -96,6 +107,7 @@ const Wrapper = styled.section`
       transform: translateX(-50%);
       border-radius: var(--radius);
     }
+
     .img-container::before {
       content: "";
       position: absolute;
