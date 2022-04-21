@@ -150,15 +150,8 @@ const StripeCheckout = () => {
 
   const transactionId = uuidv4();
   const totalamount2=`${total_amount}.00`;
-  const digest = sha1(`DL4A1EUOTIC:${transactionId}:${totalamount2}:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`);
-        //  `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${total_amount}.00
-       //   &ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${total_amount}.00`, // this is for heroku
-     //pass digest as an async function
-    const onSubmit = () => {
+  const digest = sha1(`DL4A1EUOTIC:A4515kmaA:1000.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`);
 
-        const url = `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${totalamount2}&ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${totalamount2}`;
-        window.location.href = url;
-    }
 
 
 
@@ -174,14 +167,14 @@ const StripeCheckout = () => {
                    </article>
         <form action={onSubmit()} method="get" id="paymentValidation">
             <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
-              <input type="HIDDEN" name="txnid" value={transactionId}/>
-                <input type="HIDDEN" name="amount" value={totalamount2}/>
+              <input type="HIDDEN" name="txnid" value="A4515kmaA"/>
+                <input type="HIDDEN" name="amount" value="1000.00"/>
                   <input type="HIDDEN" name="ccy" value="PHP"/>
                   <input type="HIDDEN" name="description" value="KodegoCapstone"/>
                     <input type="HIDDEN" name="email" value="gulanesgene@gmail.com"/>
-                      <input type="HIDDEN" name="digest" value={digest}/>
+                      <input type="HIDDEN" name="digest" value="d0205ec0f6ff4a45a42632c784dcfea18b4fb5b8"/>
                         <input type="HIDDEN" name="param1" value="180000000405"/>
-                          <input type="HIDDEN" name="param2" value={totalamount2}/>
+                          <input type="HIDDEN" name="param2" value="1000.00"/>
 
 
                             <button type="submit" className="btn btn-success">
