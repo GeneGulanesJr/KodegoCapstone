@@ -154,10 +154,12 @@ const StripeCheckout = () => {
 
   const transactionId = uuidv4();
   const totalamount2=`${total_amount}.00`;
-  const digest = sha1(`DL4A1EUOTIC:A4515kmaA:1000.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`);
+
     function handleSubmit(e) {
         e.preventDefault()
-        const {merchantid, txnid,amount ,ccy,description,email,digest,param1,param2} = e.target.elements
+
+        const {merchantid, txnid,amount ,ccy,description,email,param1,param2} = e.target.elements
+        const digest12 = sha1(`${merchantid}:${txnid}:${amount}:${ccy}:${description}:${email}:xLTbXsuWgEcKgbb`);
             const data = {
             merchantid: merchantid.value,
             txnid: txnid.value,
@@ -165,7 +167,7 @@ const StripeCheckout = () => {
             ccy: ccy.value,
             description: description.value,
             email: email.value,
-            digest: digest.value,
+            digest: digest12,
             param1: param1.value,
             param2: param2.value
         }
