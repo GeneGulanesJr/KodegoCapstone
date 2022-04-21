@@ -118,16 +118,9 @@ const StripeCheckout = () => {
       {/*<Elements stripe={promise}>*/}
       {/*  <CheckoutForm />*/}
       {/*</Elements>*/}
-      <form action="http://test.dragonpay.ph/Pay.aspx" method="get" id="paymentValidation">
+      <form action="https://test.dragonpay.ph/Pay.aspx?procid=BAYD&merchantid=DL4A1EUOTIC&txnid=08E33429-E077-400B-B10EF3E79C1CFB66&amount=1500.00&ccy=PHP&description=Test&email=gulanesgene%40gmail.com&digest=f3cddf1574c5c836c8a78ddcaa22fff5c96d52fc&param1=180000000405&param2=1500.00" method="get" id="paymentValidation">
 
-        <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
-        <input type="HIDDEN" name="txnid" value="uuidv4()"/>
-        <input type="HIDDEN" name="amount" value="#amount#"/>
-        <input type="HIDDEN" name="description" value="#description#"/>
-        <input type="email" name="email" value="#EmailAddress#"/>
-        <input type="HIDDEN" name="digest" value="#data2#"/>
-        <input type="HIDDEN" name="param1" value="#StudentID#"/>
-        <input type="HIDDEN" name="param2" value=""/>
+
         <button type="submit" className="btn btn-success">
           Submit
         </button>
