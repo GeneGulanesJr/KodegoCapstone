@@ -16,9 +16,135 @@ import { formatPrice } from "../utils/helpers";
 import { useHistory } from "react-router-dom";
 import sha1 from "uuid/dist/esm-node/sha1";
 
-const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+// const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-const CheckoutForm = () => {
+// const CheckoutForm = () => {
+//   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
+//   const { myUser } = useUserContext();
+//   const history = useHistory();
+//   const [succeeded, setSucceeded] = useState(false);
+//   const [error, setError] = useState(null);
+//   const [processing, setProcessing] = useState("");
+//   const [disabled, setDisabled] = useState(true);
+//   const [clientSecret, setClientSecret] = useState("");
+//   const stripe = useStripe();
+//   const elements = useElements();
+
+  // const createPaymentIntent = async () => {
+  // //  DL4A1EUOTIC:${transactionId}:${total_amount}.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb'
+  //   const transactionId = uuidv4();
+  //   const digest = sha1(`DL4A1EUOTIC:${transactionId}:${total_amount}.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`, 'sha1')
+  //   try {
+  //     const { data } = await axios.post(
+  //         // '/.netlify/functions/create-payment-intent' //this is for netlify functions
+  //         `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${total_amount}.00
+  //         &ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${total_amount}.00`, // this is for heroku
+  //
+  //
+  //
+  //
+  //     );
+  //     setClientSecret(data.clientSecret);
+  //   } catch (error) {
+  //     // console.log(error.response)
+  //   }
+  // };
+//   useEffect(() => {
+//     createPaymentIntent();
+//     // eslint-disable-next-line
+//   }, []);
+//
+//   const cardStyle = {
+//     style: {
+//       base: {
+//         color: "#32325d",
+//         fontFamily: "Arial, sans-serif",
+//         fontSmoothing: "antialiased",
+//         fontSize: "16px",
+//         "::placeholder": {
+//           color: "#32325d",
+//         },
+//       },
+//       invalid: {
+//         color: "#fa755a",
+//         iconColor: "#fa755a",
+//       },
+//     },
+//   };
+//   const handleChange = async (event) => {
+//     // Listen for changes in the CardElement
+//     // and display any errors as the customer types their card details
+//     setDisabled(event.empty);
+//     setError(event.error ? event.error.message : "");
+//   };
+//   const handleSubmit = async (ev) => {
+//     ev.preventDefault();
+//     setProcessing(true);
+//     const payload = await stripe.confirmCardPayment(clientSecret, {
+//       payment_method: {
+//         card: elements.getElement(CardElement),
+//       },
+//     });
+//     if (payload.error) {
+//       setError(`Payment failed ${payload.error.message}`);
+//       setProcessing(false);
+//     } else {
+//       setError(null);
+//       setProcessing(false);
+//       setSucceeded(true);
+//       setTimeout(() => {
+//         clearCart();
+//         history.push("/");
+//       }, 10000);
+//     }
+//   };
+//   return (
+//       <div>
+//         {succeeded ? (
+//             <article>
+//               <h4>Thank you</h4>
+//               <h4>Your payment was successful!</h4>
+//               <h4>Redirecting to home page shortly</h4>
+//             </article>
+//         ) : (
+//             <article>
+//               <h4>Hello, {myUser && myUser.name}</h4>
+//               <p>Your total is {formatPrice(total_amount)}</p>
+//               <p>Test Card Number: 4242 4242 4242 4242</p>
+//             </article>
+//         )}
+//         <form id="payment-form" onSubmit={handleSubmit}>
+//           <CardElement
+//               id="card-element"
+//               options={cardStyle}
+//               onChange={handleChange}
+//           />
+//           <button disabled={processing || disabled || succeeded} id="submit">
+//           <span id="button-text">
+//             {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
+//           </span>
+//           </button>
+//           {/* Show any error that happens when processing the payment */}
+//           {error && (
+//               <div className="card-error" role="alert">
+//                 {error}
+//               </div>
+//           )}
+//           {/* Show a success message upon completion */}
+//           <p className={succeeded ? "result-message" : "result-message hidden"}>
+//             Payment succeeded, see the result in your
+//             <a href={`https://dashboard.stripe.com/test/payments`}>
+//               {" "}
+//               Stripe dashboard.
+//             </a>{" "}
+//             Refresh the page to pay again.
+//           </p>
+//         </form>
+//       </div>
+//   );
+// };
+
+const StripeCheckout = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
   const history = useHistory();
@@ -29,127 +155,42 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-
-  const createPaymentIntent = async () => {
-  //  DL4A1EUOTIC:${transactionId}:${total_amount}.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb'
-    const transactionId = uuidv4();
-    const digest = sha1(`DL4A1EUOTIC:${transactionId}:${total_amount}.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`, 'sha1')
-    try {
-      const { data } = await axios.post(
-          // '/.netlify/functions/create-payment-intent' //this is for netlify functions
-          `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${total_amount}.00
-          &ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${total_amount}.00`, // this is for heroku
-
-
-
-
-      );
-      setClientSecret(data.clientSecret);
-    } catch (error) {
-      // console.log(error.response)
-    }
-  };
-  useEffect(() => {
-    createPaymentIntent();
-    // eslint-disable-next-line
-  }, []);
-
-  const cardStyle = {
-    style: {
-      base: {
-        color: "#32325d",
-        fontFamily: "Arial, sans-serif",
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#32325d",
-        },
-      },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a",
-      },
-    },
-  };
-  const handleChange = async (event) => {
-    // Listen for changes in the CardElement
-    // and display any errors as the customer types their card details
-    setDisabled(event.empty);
-    setError(event.error ? event.error.message : "");
-  };
-  const handleSubmit = async (ev) => {
-    ev.preventDefault();
-    setProcessing(true);
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-      },
-    });
-    if (payload.error) {
-      setError(`Payment failed ${payload.error.message}`);
-      setProcessing(false);
-    } else {
-      setError(null);
-      setProcessing(false);
-      setSucceeded(true);
-      setTimeout(() => {
-        clearCart();
-        history.push("/");
-      }, 10000);
-    }
-  };
-  return (
-      <div>
-        {succeeded ? (
-            <article>
-              <h4>Thank you</h4>
-              <h4>Your payment was successful!</h4>
-              <h4>Redirecting to home page shortly</h4>
-            </article>
-        ) : (
-            <article>
-              <h4>Hello, {myUser && myUser.name}</h4>
-              <p>Your total is {formatPrice(total_amount)}</p>
-              <p>Test Card Number: 4242 4242 4242 4242</p>
-            </article>
-        )}
-        <form id="payment-form" onSubmit={handleSubmit}>
-          <CardElement
-              id="card-element"
-              options={cardStyle}
-              onChange={handleChange}
-          />
-          <button disabled={processing || disabled || succeeded} id="submit">
-          <span id="button-text">
-            {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
-          </span>
-          </button>
-          {/* Show any error that happens when processing the payment */}
-          {error && (
-              <div className="card-error" role="alert">
-                {error}
-              </div>
-          )}
-          {/* Show a success message upon completion */}
-          <p className={succeeded ? "result-message" : "result-message hidden"}>
-            Payment succeeded, see the result in your
-            <a href={`https://dashboard.stripe.com/test/payments`}>
-              {" "}
-              Stripe dashboard.
-            </a>{" "}
-            Refresh the page to pay again.
-          </p>
-        </form>
-      </div>
-  );
-};
-
-const StripeCheckout = () => {
-  return (
+  const transactionId = uuidv4();
+  const totalamount2=`${total_amount}.00`;
+  const digest = sha1(`DL4A1EUOTIC:${transactionId}:${totalamount2}:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`);
+        //  `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=${transactionId}&amount=${total_amount}.00
+       //   &ccy=PHP&description=KodegoCapstone&email=gulanesgene%40gmail.com&digest=${digest}param1=180000000405&param2=${total_amount}.00`, // this is for heroku
+      return (
       <Wrapper>
-        <Elements stripe={promise}>
-          <CheckoutForm />
-        </Elements>
+        {/*<Elements stripe={promise}>*/}
+        {/*  <CheckoutForm />*/}
+        {/*</Elements>*/}
+        <article>
+                    <h4>Hello, {myUser && myUser.name}</h4>
+                   <p>Your total is {formatPrice(total_amount)}</p>
+                  <p>Test Card Number: 4242 4242 4242 4242</p>
+                   </article>
+        <form action="http://test.dragonpay.ph/Pay.aspx" method="get" id="paymentValidation">
+            <input type="HIDDEN" name="merchantid" value="#DL4A1EUOTIC#"/>
+              <input type="HIDDEN" name="txnid" value={transactionId}/>
+                <input type="HIDDEN" name="amount" value={totalamount2}/>
+                  <input type="HIDDEN" name="ccy" value="#PHP#"/>
+                  <input type="HIDDEN" name="description" value="KodegoCapstone"/>
+                    <input type="HIDDEN" name="email" value="gulanesgene@gmail.com"/>
+                      <input type="HIDDEN" name="digest" value={digest}/>
+                        <input type="HIDDEN" name="param1" value="180000000405"/>
+                          <input type="HIDDEN" name="param2" value={totalamount2}/>
+
+
+                            <button type="submit" className="btn btn-success">
+                              Submit
+                            </button>
+
+        </form>
+
+
+
+
       </Wrapper>
   );
 };
