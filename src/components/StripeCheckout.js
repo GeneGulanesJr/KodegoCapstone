@@ -14,6 +14,7 @@ import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
 import { formatPrice } from "../utils/helpers";
 import { useHistory } from "react-router-dom";
+import sha1 from "uuid/dist/esm-node/sha1";
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -32,7 +33,7 @@ const CheckoutForm = () => {
   const createPaymentIntent = async () => {
   //  DL4A1EUOTIC:${transactionId}:${total_amount}.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb'
     const transactionId = uuidv4();
-    const digest = useStringHashCode(`Hello, World`, 'sha1')
+    const digest = sha1(`DL4A1EUOTIC:${transactionId}:${total_amount}.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`, 'sha1')
     try {
       const { data } = await axios.post(
           // '/.netlify/functions/create-payment-intent' //this is for netlify functions
