@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
     "axios": "^0.21.1",
+    "crypto-js": "^4.1.1",
     "dotenv": "^8.2.0",
     "iframe-resizer-react": "^1.1.0",
     "netlify": "^6.0.12",
