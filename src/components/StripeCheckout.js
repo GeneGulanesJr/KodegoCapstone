@@ -147,14 +147,7 @@ import sha1 from "uuid/dist/esm-node/sha1";
 const StripeCheckout = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
-  const history = useHistory();
-  const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState("");
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState("");
-  const stripe = useStripe();
-  const elements = useElements();
+
   const transactionId = uuidv4();
   const totalamount2=`${total_amount}.00`;
   const digest = sha1(`DL4A1EUOTIC:${transactionId}:${totalamount2}:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`);
