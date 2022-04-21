@@ -27,15 +27,15 @@ const StripeCheckout = () => {
                    </article>
   {/*DL4A1EUOTIC#:A4515kmaB:1000.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb*/}
           <form   action="https://test.dragonpay.ph/Pay.aspx"     method="get"  >
-            <input type="HIDDEN" name="merchantid"  id="merchantid" value="DL4A1EUOTIC"/>
-              <input type="HIDDEN" name="txnid"  id="txnid" value="A4515kmaB"/>
-                <input type="HIDDEN" name="amount" id="amount"value="1000.00"/>
-                  <input type="HIDDEN" name="ccy" id="ccy" value="PHP"/>
-                  <input type="HIDDEN" name="description" id="description" value="KodegoCapstone"/>
-                    <input type="HIDDEN" name="email" id="email" value="gulanesgene@gmail.com"/>
-                      <input type="HIDDEN" name="digest" id="digest" value="c00f00baf4ae1f361d09fbceb133d88db388d817"/>
-                        <input type="HIDDEN" name="param1" id="param1" value="180000000405"/>
-                          <input type="HIDDEN" name="param2" id="param2" value="1000.00"/>
+              <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
+              <input type="HIDDEN" name="txnid" value="A4515kmaA"/>
+              <input type="HIDDEN" name="amount" value="1000.00"/>
+              <input type="HIDDEN" name="ccy" value="PHP"/>
+              <input type="HIDDEN" name="description" value="KodegoCapstone"/>
+              <input type="HIDDEN" name="email" value="gulanesgene@gmail.com"/>
+              <input type="HIDDEN" name="digest" value="d0205ec0f6ff4a45a42632c784dcfea18b4fb5b8"/>
+              <input type="HIDDEN" name="param1" value="180000000405"/>
+              <input type="HIDDEN" name="param2" value="1000.00"/>
                             <button type="submit" className="btn btn-success">
                               Submit
                             </button>
