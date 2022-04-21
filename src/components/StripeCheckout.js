@@ -31,10 +31,10 @@ const CheckoutForm = () => {
     try {
       const { data } = await axios.post(
         // '/.netlify/functions/create-payment-intent' //this is for netlify functions
-        "https://test.dragonpay.ph/", // this is for heroku
+        `https://test.dragonpay.ph/Pay.aspx?merchantid=DL4A1EUOTIC&txnid=56&amount=${total_amount}&ccy=PHP&description=Order+Of+Dec+2013&email=rupaknpl%40gmail.com&digest=3ea77e616c8aa5ce501be76e97d39cda92d50bf6`, // this is for heroku
       console.log(  JSON.stringify({ cart, shipping_fee, total_amount }))
       );
-      setClientSecret(data.clientSecret);
+
     } catch (error) {
       // console.log(error.response)
     }
@@ -90,45 +90,19 @@ const CheckoutForm = () => {
   };
   return (
     <div>
-      {succeeded ? (
-        <article>
-          <h4>Thank you</h4>
-          <h4>Your payment was successful!</h4>
-          <h4>Redirecting to home page shortly</h4>
-        </article>
-      ) : (
-        <article>
-          <h4>Hello, {myUser && myUser.name}</h4>
-          <p>Your total is {formatPrice(total_amount)}</p>
-          <p>Test Card Number: 4242 4242 4242 4242</p>
-        </article>
-      )}
-      <form id="payment-form" onSubmit={handleSubmit}>
-        <CardElement
-          id="card-element"
-          options={cardStyle}
-          onChange={handleChange}
-        />
-        <button disabled={processing || disabled || succeeded} id="submit">
-          <span id="button-text">
-            {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
-          </span>
-        </button>
-        {/* Show any error that happens when processing the payment */}
-        {error && (
-          <div className="card-error" role="alert">
-            {error}
+      <form action="http://test.dragonpay.ph/Pay.aspx" method="get">
+        <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
+        <input type="HIDDEN" name="txnid" value="56"/>
+        <input type="HIDDEN" name="amount" value="1000.00"/>
+        <input type="HIDDEN" name="ccy" value="PHP"/>
+        <input type="HIDDEN" name="description" value="Order Of Dec 2013"/>
+        <input type="HIDDEN" name="email" value="rupaknpl@gmail.com"/>
+        <input type="HIDDEN" name="digest" value="3ea77e616c8aa5ce501be76e97d39cda92d50bf6"/>
+        <div className="buttons">
+          <div className="right">
+            <input type="submit" value="Confirm Order" className="button"/>
           </div>
-        )}
-        {/* Show a success message upon completion */}
-        <p className={succeeded ? "result-message" : "result-message hidden"}>
-          Payment succeeded, see the result in your
-          <a href={`https://dashboard.stripe.com/test/payments`}>
-            {" "}
-            Stripe dashboard.
-          </a>{" "}
-          Refresh the page to pay again.
-        </p>
+        </div>
       </form>
     </div>
   );

@@ -19,8 +19,6 @@ const Contact = () => {
               subscribe
             </button>
           </form>
-
-
         </div>
       </div>
     </Wrapper>
