@@ -1,57 +1,18 @@
-import React, { useState, useEffect } from "react";
+
 import styled from "styled-components";
-import { loadStripe } from "@stripe/stripe-js";
-import { useStringHashCode } from 'use-hashcode'
 import { v4 as uuidv4 } from 'uuid';
-import {
-  CardElement,
-  useStripe,
-  Elements,
-  useElements,
-} from "@stripe/react-stripe-js";
-import axios from "axios";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
 import { formatPrice } from "../utils/helpers";
-import sha1 from "uuid/dist/esm-node/sha1";
 
 
 const StripeCheckout = () => {
-  const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
+  const { cart, total_amount } = useCartContext();
   const { myUser } = useUserContext();
 
   const transactionId = uuidv4();
   const totalamount2=`${total_amount}.00`;
 
-
-    function handleChange(event) {
-        console.log(event.target.value);
-    }
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        const {merchantid, txnid,amount ,ccy,description,email,param1,param2} = e.target.elements
-        const digest12 = sha1(`${merchantid}:${txnid}:${amount}:${ccy}:${description}:${email}:xLTbXsuWgEcKgbb`);
-            const data = {
-            merchantid: merchantid.value,
-            txnid: txnid.value,
-            amount: amount.value,
-            ccy: ccy.value,
-            description: description.value,
-            email: email.value,
-            digest: digest12,
-            param1: param1.value,
-            param2: param2.value
-        }
-       // https://test.dragonpay.ph/Pay.aspx
-        fetch('https://test.dragonpay.ph/Pay.aspx', {
-            method: 'GET',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-    }
 
 
       return (
@@ -64,27 +25,22 @@ const StripeCheckout = () => {
                    <p>Your total is {formatPrice(total_amount)}</p>
                   <p>Test Card Number: 4242 4242 4242 4242</p>
                    </article>
-          <form onSubmit={handleSubmit}>
+  {/*DL4A1EUOTIC#:A4515kmaB:1000.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb*/}
+          <form   action="https://test.dragonpay.ph/Pay.aspx"     method="get"  >
             <input type="HIDDEN" name="merchantid"  id="merchantid" value="DL4A1EUOTIC"/>
-              <input type="HIDDEN" name="txnid"  id="txnid" value="A4515kmaA"/>
+              <input type="HIDDEN" name="txnid"  id="txnid" value="A4515kmaB"/>
                 <input type="HIDDEN" name="amount" id="amount"value="1000.00"/>
                   <input type="HIDDEN" name="ccy" id="ccy" value="PHP"/>
                   <input type="HIDDEN" name="description" id="description" value="KodegoCapstone"/>
                     <input type="HIDDEN" name="email" id="email" value="gulanesgene@gmail.com"/>
-                      <input type="HIDDEN" name="digest" id="digest" value=""/>
+                      <input type="HIDDEN" name="digest" id="digest" value="c00f00baf4ae1f361d09fbceb133d88db388d817"/>
                         <input type="HIDDEN" name="param1" id="param1" value="180000000405"/>
                           <input type="HIDDEN" name="param2" id="param2" value="1000.00"/>
-
-
                             <button type="submit" className="btn btn-success">
                               Submit
                             </button>
 
         </form>
-
-
-
-
       </Wrapper>
   );
 };
