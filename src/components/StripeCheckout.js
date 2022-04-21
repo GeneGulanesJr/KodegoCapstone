@@ -167,7 +167,7 @@ const StripeCheckout = () => {
             <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
               <input type="HIDDEN" name="txnid" value={transactionId}/>
                 <input type="HIDDEN" name="amount" value={totalamount2}/>
-                  <input type="HIDDEN" name="ccy" value="#PHP#"/>
+                  <input type="HIDDEN" name="ccy" value="PHP"/>
                   <input type="HIDDEN" name="description" value="KodegoCapstone"/>
                     <input type="HIDDEN" name="email" value="gulanesgene@gmail.com"/>
                       <input type="HIDDEN" name="digest" value={digest}/>
