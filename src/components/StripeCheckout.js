@@ -14,6 +14,10 @@ const StripeCheckout = () => {
   const totalamount2=`${total_amount}.00`;
 
 
+   const onClick = async (e) => {
+       localStorage.removeItem("cart");
+   }
+
 
       return (
       <Wrapper>
