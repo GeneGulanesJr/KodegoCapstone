@@ -52,6 +52,7 @@ export const services = [
   },
 ]
 
-export const products_url = 'https://course-api.com/react-store-products'
+export const products_url = 'https://genegulanesjr.github.io/Framework-List/db.json'
 
-export const single_product_url = `https://course-api.com/react-store-single-product?id=`
+ export const single_product_url = `https://json-server-kodego.herokuapp.com/products?id=`
+//export const single_product_url = `https://course-api.com/react-store-single-product?id=recEOA6qtDag1hRbU`
