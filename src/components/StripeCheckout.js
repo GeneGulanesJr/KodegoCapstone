@@ -45,7 +45,7 @@ const StripeCheckout = () => {
         }
        // https://test.dragonpay.ph/Pay.aspx
         fetch('https://test.dragonpay.ph/Pay.aspx', {
-            method: 'POST',
+            method: 'GET',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
