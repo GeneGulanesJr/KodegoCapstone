@@ -144,6 +144,10 @@ import sha1 from "uuid/dist/esm-node/sha1";
 //   );
 // };
 
+
+
+
+
 const StripeCheckout = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
   const { myUser } = useUserContext();
@@ -151,8 +155,28 @@ const StripeCheckout = () => {
   const transactionId = uuidv4();
   const totalamount2=`${total_amount}.00`;
   const digest = sha1(`DL4A1EUOTIC:A4515kmaA:1000.00:PHP:KodegoCapstone:gulanesgene@gmail.com:xLTbXsuWgEcKgbb`);
-
-
+    function handleSubmit(e) {
+        e.preventDefault()
+        const {merchantid, txnid,amount ,ccy,description,email,digest,param1,param2} = e.target.elements
+            const data = {
+            merchantid: merchantid.value,
+            txnid: txnid.value,
+            amount: amount.value,
+            ccy: ccy.value,
+            description: description.value,
+            email: email.value,
+            digest: digest.value,
+            param1: param1.value,
+            param2: param2.value
+        }
+        axios.post('http://test.dragonpay.ph/Pay.aspx', data)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
 
       return (
@@ -165,16 +189,16 @@ const StripeCheckout = () => {
                    <p>Your total is {formatPrice(total_amount)}</p>
                   <p>Test Card Number: 4242 4242 4242 4242</p>
                    </article>
-          <form action="http://test.dragonpay.ph/Pay.aspx" method="get">
-            <input type="HIDDEN" name="merchantid" value="DL4A1EUOTIC"/>
-              <input type="HIDDEN" name="txnid" value="A4515kmaA"/>
-                <input type="HIDDEN" name="amount" value="1000.00"/>
-                  <input type="HIDDEN" name="ccy" value="PHP"/>
-                  <input type="HIDDEN" name="description" value="KodegoCapstone"/>
-                    <input type="HIDDEN" name="email" value="gulanesgene@gmail.com"/>
-                      <input type="HIDDEN" name="digest" value="d0205ec0f6ff4a45a42632c784dcfea18b4fb5b8"/>
-                        <input type="HIDDEN" name="param1" value="180000000405"/>
-                          <input type="HIDDEN" name="param2" value="1000.00"/>
+          <form onSubmit={handleSubmit}>
+            <input type="HIDDEN" name="merchantid"  id="merchantid" value="DL4A1EUOTIC"/>
+              <input type="HIDDEN" name="txnid"  id="txnid" value="A4515kmaA"/>
+                <input type="HIDDEN" name="amount" id="amount"value="1000.00"/>
+                  <input type="HIDDEN" name="ccy" id="ccy" value="PHP"/>
+                  <input type="HIDDEN" name="description" id="description" value="KodegoCapstone"/>
+                    <input type="HIDDEN" name="email" id="email" value="gulanesgene@gmail.com"/>
+                      <input type="HIDDEN" name="digest" id="digest" value=""/>
+                        <input type="HIDDEN" name="param1" id="param1" value="180000000405"/>
+                          <input type="HIDDEN" name="param2" id="param2" value="1000.00"/>
 
 
                             <button type="submit" className="btn btn-success">
