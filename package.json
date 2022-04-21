@@ -20,6 +20,8 @@
     "react-scripts": "4.0.0",
     "stripe": "^8.130.0",
     "styled-components": "^5.2.1",
+    "use-hashcode": "^0.1.5",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
