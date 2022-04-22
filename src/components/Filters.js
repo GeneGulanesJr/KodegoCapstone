@@ -64,7 +64,7 @@ const Filters = () => {
           {/* end of category */}
           {/* company */}
           <div className='form-control'>
-            <h5>company</h5>
+            <h5>Type</h5>
             <select
               name='company'
               value={company}
