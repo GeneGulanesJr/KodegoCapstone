@@ -36,7 +36,7 @@ const StripeCheckout = () => {
               <input type="HIDDEN" name="description" value="KodegoCapstone"/>
               <input type="HIDDEN" name="email" value="gulanesgene@gmail.com"/>
               <input type="HIDDEN" name="digest" value="d0205ec0f6ff4a45a42632c784dcfea18b4fb5b8"/>
-              <input type="HIDDEN" name="param1" value="180000000405"/>
+              <input type="HIDDEN" name="param1" value="KodegoCapstone"/>
               <input type="HIDDEN" name="param2" value="1000.00"/>
                             <button type="submit" className="btn btn-success" onClick={onClick}>
                               Submit
